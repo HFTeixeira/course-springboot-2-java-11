@@ -11,8 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.apache.catalina.servlets.DefaultServlet.SortManager.Order;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -27,11 +25,11 @@ public class User implements Serializable {
 	private String email;
 	private String phone;
 	private String password;
-
+	
 	@JsonIgnore
 	@OneToMany(mappedBy = "client")
 	private List<Order> orders = new ArrayList<>();
-
+	
 	public User() {
 	}
 
@@ -84,10 +82,11 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
+
 	public List<Order> getOrders() {
 		return orders;
 	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
